@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-primary);
+}
+
+body {
+  font-family: var(--font-secondary);
+  min-height: 100vh;
+}
+
+.pb-24, #__next {
+  min-height: 100vh;
+}
+
+.bg-gradient-conic {
+  display: none;
+}
+
+.pb-24 {
+  padding-bottom: 0;
+}
+
+.py-16 {
+  padding-top: 30px;
+}
+
+a, a:hover, a:focus, a:visited, a:active,
+svg, svg:hover, svg:focus, svg:visited, svg:active {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}

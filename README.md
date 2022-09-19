@@ -1,46 +1,85 @@
-# Hugo template for Netlify CMS with Netlify Identity
+![Netlify Next.js Blog Template designed by Bejamas](github-banner.svg)
 
-This is a small business template built with [Hugo](https://gohugo.io) and [Netlify CMS](https://github.com/netlify/netlify-cms), designed and developed by [Darin Dimitroff](https://twitter.com/deezel), [spacefarm.digital](https://www.spacefarm.digital).
+[![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/nextjs-blog-theme)
 
-## Getting started
+A customizable blog starter using:
 
-Use our deploy button to get your own copy of the repository. 
+- [Next.js](https://github.com/vercel/next.js) v12
+- [Tailwind](https://tailwindcss.com/) v3.0
+- Built-in [MDX](https://mdxjs.com/) v1 support
+- Includes modern design with dark & light themes
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/one-click-hugo-cms&stack=cms)
+> 🎉 We’re really excited about the Bejamas + Netlify collaboration and we were going to celebrate it with some swag, but we realized we could put that money into supporting OSS and our ecosystem even more! After all, who needs another t-shirt or sticker?!
+>
+> [Click this link](https://oss-form.netlify.app/) to vote for your favorite Open Source project!
 
-This will setup everything needed for running the CMS:
+![Preview of blog theme. Author named Jay Doe and blog's name is "Next.js Blog Theme" with one blog post](nextjs-blog-theme-preview.png)
 
-* A new repository in your GitHub account with the code
-* Full Continuous Deployment to Netlify's global CDN network
-* Control users and access with Netlify Identity
-* Manage content with Netlify CMS
+[Take a gander at the demo.](https://bejamas-nextjs-blog.netlify.app)
 
-Once the initial build finishes, you can invite yourself as a user. Go to the Identity tab in your new site, click "Invite" and send yourself an invite.
+[Click here to watch the template walkthrough!](https://www.youtube.com/watch?v=63QZHs259dY)
 
-Now you're all set, and you can start editing content!
+## Getting Started
 
-## Local Development
+---
 
-Clone this repository, and run `yarn` or `npm install` from the new folder to install all required dependencies.
+You can get started with this project in two ways: locally or using the [setup wizard](https://nextjs-wizard.netlify.app/).
 
-Then start the development server with `yarn start` or `npm start`.
+### Setting Up Locally
 
-## Layouts
+If you're doing it locally, start with clicking the [use this template](https://github.com/netlify-templates/nextjs-blog-theme/generate) button on GitHub. This will create a new repository with this template's files on your GitHub account. Once that is done, clone your new repository and navigate to it in your terminal.
 
-The template is based on small, content-agnostic partials that can be mixed and matched. The pre-built pages showcase just a few of the possible combinations. Refer to the `site/layouts/partials` folder for all available partials.
+From there, you can install the project's dependencies by running:
 
-Use Hugo’s `dict` functionality to feed content into partials and avoid repeating yourself and creating discrepancies.
-
-## CSS
-
-The template uses a custom fork of Tachyons and PostCSS with cssnext and cssnano. To customize the template for your brand, refer to `src/css/imports/_variables.css` where most of the important global variables like colors and spacing are stored.
-
-## SVG
-
-All SVG icons stored in `site/static/img/icons` are automatically optimized with SVGO (gulp-svgmin) and concatenated into a single SVG sprite stored as a a partial called `svg.html`. Make sure you use consistent icons in terms of viewport and art direction for optimal results. Refer to an SVG via the `<use>` tag like so:
-
+```shell
+yarn install
 ```
-<svg width="16px" height="16px" class="db">
-  <use xlink:href="#SVG-ID"></use>
-</svg>
+
+Finally, you can run your project locally with:
+
+```shell
+yarn run dev
 ```
+
+Open your browser and visit <http://localhost:3000>, your project should be running!
+
+### Using the Setup Wizard
+
+![Preview of Setup Wizard showing the initial page of a setup form](nextjs-setup-wizard.png)
+
+Through the [setup wizard](https://nextjs-wizard.netlify.app/), you can create your blog in a few clicks and deploy to Netlify.
+
+## Configuring the blog
+
+The config is based on environment variables to make it easy to integrate with any Jamstack platform, like Netlify.
+
+Here are the variables you can edit:
+| Variable | Description | Options
+| --- | --- | --- |
+| `BLOG_NAME` | the name of your blog, displayed below the avatar ||
+| `BLOG_TITLE` | the main header (`h1`) on the home page ||
+| `BLOG_FOOTER_TEXT`| the text in the footer ||
+| `BLOG_THEME` | the theme to pass to Tailwind | default |
+| `BLOG_FONT_HEADINGS` | the font-family for all HTML headings, from `h1` to `h6`| sans-serif (default), serif, monospace|
+| `BLOG_FONT_PARAGRAPHS` | the font-family for all other HTML elements | sans-serif (default), serif, monospace|
+
+All of the env variables can be configured through the [Wizard](https://nextjs-wizard.netlify.app/) or through setting the project's environment variables. You can do this in your Netlify dashaboard (Site settings/Build & deploy/Environment/Environment variables).
+
+https://user-images.githubusercontent.com/3611928/153997545-6dcdeef0-e570-49e7-93d6-ce0d393d16c9.mp4
+
+[alt: video walkthrough of editing env vars]
+
+If setting an environment variable isn't your cup of tea, the defaults can be changed in [`utils/global-data.js`](/utils/global-data.js). You can also remove the variables and hard code blog information where these variables are used in the code base.
+
+- `BLOG_THEME, BLOG_FONT_HEADINGS, & BLOG_FONT_PARAGRAPHS` are used in [`tailwind-preset.js`](tailwind-preset.js)
+- `BLOG_NAME, BLOG_TITLE, BLOG_FOOTER_TEXT` are used in [`pages/index.js`](pages/index.js) & [`pages/posts/[slug].js`](pages/posts/[slug].js) through the `globalData` object.
+
+## Adding new posts
+
+All posts are stored in `/posts` directory. To make a new post, create a new file with the [`.mdx` extension](https://mdxjs.com/).
+
+Since the posts are written in `MDX` format you can pass props and components. That means you can use [React components](https://reactjs.org/docs/components-and-props.html) inside your posts to make them more interactive. Learn more about how to do so in the [MDX docs on content](https://mdxjs.com/docs/using-mdx/#components).
+
+https://user-images.githubusercontent.com/3611928/152727802-102ec296-41c8-446d-93ed-922d11187073.mp4
+
+[alt: video walkthrough of adding a new blog post]

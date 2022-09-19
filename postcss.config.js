@@ -1,10 +1,8 @@
+// If you want to use other PostCSS plugins, see the following:
+// https://tailwindcss.com/docs/using-with-preprocessors
 module.exports = {
-  plugins: [
-    ["postcss-import",{}],
-    ["postcss-preset-env",{
-      browsers: "last 2 versions"
-    }],
-    ["postcss-custom-media",{}],
-    ["autoprefixer",{}]
-  ]
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
 };
